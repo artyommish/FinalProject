@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.1.0'
+
+    // https://mvnrepository.com/artifact/junit/junit
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0'
+    testCompileOnly 'io.cucumber:cucumber-junit:7.0.0'
+    testCompileOnly 'io.cucumber:cucumber-jvm:7.0.0'
+    testCompileOnly 'io.cucumber:cucumber-java:7.0.0'
+    testImplementation 'com.codeborne:selenide:6.0.3'
+
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
