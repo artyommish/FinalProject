@@ -3,8 +3,11 @@ package finalProject.testRunner;
 
 import finalProject.base.TestBase;
 import finalProject.models.Customer;
+import finalProject.models.Product;
 import finalProject.pages.ItemPage;
+import finalProject.pages.LogInPage;
 import finalProject.pages.StartPage;
+
 import org.junit.Test;
 
 public class Test1a extends TestBase  {
@@ -12,19 +15,22 @@ public class Test1a extends TestBase  {
     public void itemBuyingTest() {
         StartPage startPage = new StartPage(this.driver);
         ItemPage itemPage = new ItemPage(this.driver);
+        LogInPage logInPage = new LogInPage(this.driver);
         Customer customer = new Customer();
+        Product product = new Product(this.driver);
 
         startPage.openStartPage();
         startPage.acceptAllCookies();
         startPage.itemNameInput();
         startPage.setSubmitButtonClick();
         itemPage.setItemSelectionClick();
+        product.copyName();
         itemPage.setAddItemClick();
         itemPage.setGoToBasketButtonClick();
         itemPage.nameAndPriceValidation();
         itemPage.setProceedToPaymentClick();
-        itemPage.enterNoRegEmail(customer.getUserEmail1());
-        itemPage.setContinueButtonClick();
+        logInPage.enterNoRegEmail(customer.getUserEmail1());
+        logInPage.setContinueButtonClick();
         itemPage.setShipmentFieldClick();
         itemPage.setPickupPlaceClick();
         itemPage.enterCredentials(customer.getUserName(), customer.getUserSurname(), customer.getUserPhoneNum());

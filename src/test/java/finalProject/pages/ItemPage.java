@@ -5,18 +5,19 @@ import finalProject.models.Customer;
 import finalProject.models.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ItemPage {
     private ChromeDriver driver;
-    Product product = new Product();
+    Product product = new Product(this.driver);
     Customer customer = new Customer();
 
 
@@ -24,8 +25,6 @@ public class ItemPage {
     private final By addItem = By.id("add_to_cart_btn");
     private final By goToBasketButton = By.xpath("//a[@class='main-button']");
     private final By proceedToPayment = By.xpath("//input[@value='Veikt apmaksu']");
-    private final By noRegEmail = By.xpath("(//input[@type='email'])[2]");
-    private final By continueButton = By.xpath("//input[@value='Turpināt']");
     private final By shipmentField = By.xpath("//input[@value='2']");
     private final By pickupPlace = By.xpath("(//div[@class='pickup-point-name'])[1]");
     private final By nameField = By.id("address_first_name");
@@ -55,6 +54,7 @@ public class ItemPage {
 
     public void setGoToBasketButtonClick() {
 
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(goToBasketButton));
         driver.findElement(goToBasketButton).click();
@@ -74,25 +74,17 @@ public class ItemPage {
         driver.findElement(proceedToPayment).click();
     }
 
-    public void enterNoRegEmail(String email) {
-        driver.findElement(noRegEmail).sendKeys(email);
-    }
-
-    public void setContinueButtonClick() {
-        driver.findElement(continueButton).click();
-    }
-
     public void setShipmentFieldClick() {
         driver.findElement(shipmentField).click();
     }
 
 
     public void setPickupPlaceClick() {
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='plainoverlay']"))));
 
-        wait = new WebDriverWait(driver, 10);
+
         wait.until(ExpectedConditions.elementToBeClickable(pickupPlace));
         driver.findElement(pickupPlace).click();
     }
@@ -113,12 +105,12 @@ public class ItemPage {
         Actions actions = new Actions(driver);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
 
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,2000);");
         actions.moveToElement(driver.findElement(saveCredentials));
         wait.until(ExpectedConditions.elementToBeClickable(saveCredentials));
-       // driver.findElement(saveCredentials).click();
+
        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(saveCredentials));
 
     }
@@ -130,7 +122,7 @@ public class ItemPage {
 
         actions.moveToElement(driver.findElement(saveCredentials));
         wait.until(ExpectedConditions.elementToBeClickable(paymentButton));
-        //driver.findElement(paymentButton).click();
+
        ((JavascriptExecutor) driver).executeScript("arguments[0].submit();", driver.findElement(By.xpath("(//form[@class='default-form'])[1]")));
 
 
@@ -145,7 +137,7 @@ public class ItemPage {
 
     public void nameSurnamePhonePriceValidation() {
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='name']")));
