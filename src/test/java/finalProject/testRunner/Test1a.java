@@ -3,7 +3,7 @@ package finalProject.testRunner;
 
 import finalProject.base.TestBase;
 import finalProject.models.Customer;
-import finalProject.models.Product;
+
 import finalProject.pages.ItemPage;
 import finalProject.pages.LogInPage;
 import finalProject.pages.StartPage;
@@ -17,14 +17,13 @@ public class Test1a extends TestBase  {
         ItemPage itemPage = new ItemPage(this.driver);
         LogInPage logInPage = new LogInPage(this.driver);
         Customer customer = new Customer();
-        Product product = new Product(this.driver);
+
 
         startPage.openStartPage();
         startPage.acceptAllCookies();
         startPage.itemNameInput();
         startPage.setSubmitButtonClick();
         itemPage.setItemSelectionClick();
-        product.copyName();
         itemPage.setAddItemClick();
         itemPage.setGoToBasketButtonClick();
         itemPage.nameAndPriceValidation();

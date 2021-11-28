@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class StartPage {
 
     private ChromeDriver driver;
+
     String baseUrl = "https://www.1a.lv/";
     private final By searchBar = By.id("q");
     private final By submitButton = By.className("main-search-submit");
