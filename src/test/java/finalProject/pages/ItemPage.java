@@ -3,10 +3,8 @@ package finalProject.pages;
 
 import finalProject.models.Customer;
 import finalProject.models.Product;
-import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,7 +38,6 @@ public class ItemPage {
     }
 
 
-
     public void setItemSelectionClick() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1000)");
@@ -48,8 +45,7 @@ public class ItemPage {
         wait.until(ExpectedConditions.elementToBeClickable(itemSelection));
         driver.findElement(itemSelection).click();
     }
-///html/body/div[2]/div[3]/div/div[2]/div[1]/div[2]/h1
-    //'.product-righter h1'
+
     public void setAddItemClick() {
         String Name = driver.findElement(By.cssSelector(".product-righter h1")).getText();
         product.setProductName(Name);
