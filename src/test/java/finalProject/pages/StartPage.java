@@ -2,28 +2,19 @@ package finalProject.pages;
 
 import finalProject.base.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class StartPage {
+public class StartPage extends TestBase {
 
-    private ChromeDriver driver;
 
-    String baseUrl = "https://www.1a.lv/";
     private final By searchBar = By.id("q");
     private final By submitButton = By.className("main-search-submit");
     private final By acceptAllCookiesButton = By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
 
 
-    public StartPage(ChromeDriver driver) {
-        this.driver = driver;
-    }
 
-    public void openStartPage() {
-        driver.get(baseUrl);
-        driver.manage().window().maximize();
-    }
 
     public void acceptAllCookies() {
         WebDriverWait wait = new WebDriverWait(driver, 10);

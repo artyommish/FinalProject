@@ -1,11 +1,10 @@
 package finalProject.pages;
 
-
+import finalProject.base.TestBase;
 import finalProject.models.Customer;
 import finalProject.models.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,12 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ItemPage {
-    private ChromeDriver driver;
+public class ItemPage extends TestBase {
 
     Customer customer = new Customer();
     Product product = new Product();
-
 
     private final By itemSelection = By.xpath("(//a[@class='ks-new-product-name'])[1]");
     private final By addItem = By.id("add_to_cart_btn");
@@ -32,10 +29,6 @@ public class ItemPage {
     private final By saveCredentials = By.xpath("(//button[@type='submit'])[1]");
     private final By paymentButton = By.xpath("(//button[@type='submit'])[2]");
     private final By paymentMethod = By.id("payment_unused_22");
-
-    public ItemPage(ChromeDriver driver) {
-        this.driver = driver;
-    }
 
 
     public void setItemSelectionClick() {
@@ -108,7 +101,6 @@ public class ItemPage {
         Actions actions = new Actions(driver);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-
 
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,2000);");
         actions.moveToElement(driver.findElement(saveCredentials));

@@ -8,18 +8,35 @@ import finalProject.pages.ItemPage;
 import finalProject.pages.LogInPage;
 import finalProject.pages.StartPage;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Test1a extends TestBase  {
+public class Test1a extends TestBase {
+
+    StartPage startPage = new StartPage();
+    ItemPage itemPage = new ItemPage();
+    LogInPage logInPage = new LogInPage();
+    Customer customer = new Customer();
+
+    @Before
+
+    public void setUp() {
+        startDriver();
+        driver.get("https://www.1a.lv/");
+        driver.manage().window().maximize();
+
+    }
+
+    @After
+    public void stopDriver() {
+    driver.quit();
+    }
+
     @Test
     public void itemBuyingTest() {
-        StartPage startPage = new StartPage(this.driver);
-        ItemPage itemPage = new ItemPage(this.driver);
-        LogInPage logInPage = new LogInPage(this.driver);
-        Customer customer = new Customer();
 
-
-        startPage.openStartPage();
         startPage.acceptAllCookies();
         startPage.itemNameInput();
         startPage.setSubmitButtonClick();

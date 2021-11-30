@@ -1,8 +1,7 @@
 package finalProject.base;
 
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -11,9 +10,9 @@ public class TestBase {
 
     //public static FirefoxDriver driver;
 
-     public ChromeDriver driver;
+     public static ChromeDriver driver;
 
-    @Before
+//    @Before
     public void startDriver() {
         String driverPath = "C:\\Users\\A\\IdeaProjects\\LectureProjectForQA2\\src\\test\\resources\\";
         System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
