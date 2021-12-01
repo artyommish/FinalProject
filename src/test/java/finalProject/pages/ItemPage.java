@@ -14,8 +14,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ItemPage extends TestBase {
 
+
     Customer customer = new Customer();
     Product product = new Product();
+
 
     private final By itemSelection = By.xpath("(//a[@class='ks-new-product-name'])[1]");
     private final By addItem = By.id("add_to_cart_btn");
@@ -29,6 +31,8 @@ public class ItemPage extends TestBase {
     private final By saveCredentials = By.xpath("(//button[@type='submit'])[1]");
     private final By paymentButton = By.xpath("(//button[@type='submit'])[2]");
     private final By paymentMethod = By.id("payment_unused_22");
+
+
 
 
     public void setItemSelectionClick() {
@@ -102,7 +106,8 @@ public class ItemPage extends TestBase {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,2000);");
+
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1000);");
         actions.moveToElement(driver.findElement(saveCredentials));
         wait.until(ExpectedConditions.elementToBeClickable(saveCredentials));
 
@@ -111,11 +116,11 @@ public class ItemPage extends TestBase {
     }
 
     public void setPaymentButtonClick() {
-        Actions actions = new Actions(driver);
+//        Actions actions = new Actions(driver);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,2000);");
-        actions.moveToElement(driver.findElement(saveCredentials));
+//        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,2000);");
+//        actions.moveToElement(driver.findElement(paymentButton));
         wait.until(ExpectedConditions.elementToBeClickable(paymentButton));
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].submit();", driver.findElement(By.xpath("(//form[@class='default-form'])[1]")));
